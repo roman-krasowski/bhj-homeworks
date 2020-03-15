@@ -1,14 +1,18 @@
 //Assignment 2
-let clickInitial = document.getElementById("C");
+const clickInitial = document.getElementById("C");
 const cookie = document.getElementById("cookie");
 let clickNew;
 
-function changeSize() {
-    cookie.width = 400;
-    cookie.width = 300;
+cookie.onclick = function changeSize() {
     clickNew = clickInitial.textContent;
     clickNew = parseInt(clickNew, 10) + 1;
     clickInitial.textContent = clickNew;
-};
 
-cookie.onclick = changeSize;
+    if (clickNew % 2 == 0) {
+        cookie.width = 200;
+        cookie.width = 200;
+    } else {
+        cookie.width = 250;
+        cookie.width = 250;
+    }
+};
