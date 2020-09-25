@@ -14,7 +14,6 @@ menuText = Array.from(menuText);
 for(let i=0; i<menuText.length; i++) {
     menuText[i].addEventListener('click', function() {
         menu.textContent = this.textContent;
-        console.log(this.textContent);
         return false;
     });
 };
