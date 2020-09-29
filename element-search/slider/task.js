@@ -9,7 +9,7 @@ let clickCount = 0;
 //добаввляет класс slider__item_active при клике назад
 function prevSlide() {
     clickCount -=1;
-    if(clickCount < 0) {
+    if (clickCount < 0) {
         clickCount = sliderItem.length - 1;
         console.log(clickCount);
         sliderItem[clickCount].classList.add('slider__item_active');
@@ -21,7 +21,7 @@ function prevSlide() {
 //добаввляет класс slider__item_active при клике вперед
 function nextSlide() {
     clickCount +=1;
-    if(clickCount < sliderItem.length) {
+    if (clickCount < sliderItem.length) {
         sliderItem[clickCount].classList.add('slider__item_active');
     } else {
         clickCount = 0;
