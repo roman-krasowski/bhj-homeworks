@@ -12,8 +12,14 @@ menu.addEventListener('click', function() {
 let menuText = document.querySelectorAll('.dropdown__link');
 menuText = Array.from(menuText);
 for(let i=0; i<menuText.length; i++) {
-    menuText[i].addEventListener('click', function() {
+    menuText[i].closest('.dropdown__item').addEventListener('click', function() {
         menu.textContent = this.textContent;
-        return false;
+        dropMenu.classList.remove('dropdown__list_active');
     });
+    menuText[i].addEventListener('click', stopLink);   
 };
+
+//запрет стандартного действия (переход по ссылке)
+function stopLink(event) {
+    event.preventDefault();
+  };
