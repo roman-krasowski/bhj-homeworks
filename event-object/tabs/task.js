@@ -10,7 +10,7 @@ for(let i=0; i<tab.length; i++) {
 
     tab[i].addEventListener('click', function() {
         tab[activeNow].classList.remove('tab_active');
-        conyent[activeNow].classList.remove('tab__content_active');
+        content[activeNow].classList.remove('tab__content_active');
         tab[i].classList.add('tab_active');
         content[i].classList.add('tab__content_active');
     });
