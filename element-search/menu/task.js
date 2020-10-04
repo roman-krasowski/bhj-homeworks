@@ -15,9 +15,6 @@ for(let i=0; i<menuItem.length; i++) {
   menuItem[i].addEventListener('click', stopLink);
   menuItem[i].addEventListener('click', function() {
       let parentItem = menuItem[i].closest('.menu__item');
-  
-      if (parentItem.querySelector('ul').className = 'menu_sub') {
-        parentItem.querySelector('ul').classList.add('menu_active');
-      };
+      parentItem.querySelector('ul').classList.toggle('menu_active');
   });
 };
