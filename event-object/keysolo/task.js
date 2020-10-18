@@ -17,7 +17,22 @@ class Game {
   }
 
   registerEvents() {
+
+    let symbol = this.currentSymbol.textContent; //символ, который пользователь должен ввести
+
+    window.addEventListener('keydown', (event) => {
+      let input = event.key;
+      if (input.charCodeAt(0) === symbol.charCodeAt(0)) {
+        this.currentSymbol = this.currentSymbol.nextElementSibling;
+      } else {
+        
+      };
+    });
+    
+  
     /*
+
+
       TODO:
       Написать обработчик события, который откликается
       на каждый введённый символ.
