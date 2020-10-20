@@ -1,21 +1,28 @@
 'use strict'
 
-//let checkbox = Array.from(document.querySelectorAll('.interest__check'));
-let listElement = Array.from(document.querySelectorAll('.interest'));
+//let child = Array.from(document.querySelectorAll('ul.interests_active > li > label > input'));
 
-/*
-1) получаем все чекбоксы
-2) находим чекбоксы, у которых есть дочерние чекбоксы
-3) завешиваем функцию на чекбоксы пункта 2
-*/
+let parent = [document.querySelector('ul > li'), document.querySelector('ul > li').nextElementSibling]; //сдалать циклом
+let child =[];
 
-let parent = listElement[0].nextElementSibling;
-let child = Array.from(parent.querySelectorAll('input'));
-
-for (let i=0; i<child.length; i++) {
-    child[i].addEventListener('click', function() {
-        if(child[0].checked == true) {
-            child[1].checked == true;
-        };
-    });
+//определение дочерних элементов
+for (let i=0; i<parent.length; i++) {
+    child = parent[i].getElementsByTagName('input');
+    parent[i] = parent[i].querySelector('label > input');
 };
+
+//добавление true на дочерние чекбоксы при нажатии родительского
+for(let i=0; i<parent.length; i++) {
+    parent[i].addEventListener('click', function() {
+        if(parent[i].checked) {
+            child[1].checked = true;
+        } else {
+            child[i].checked = false;
+        };
+    });;
+};
+
+//добавление true родительский чекбокс при нажатии дочерних
+
+console.log(child);
+console.log(parent);
