@@ -68,6 +68,22 @@ class Autocomplete {
   }
 
   getMatches( text ) {
+    
+    //расспличивает слова по буквам
+    let userInput = Array.from(this.input.options);
+    for (let i=0; i<userInput.length; i++) {
+      userInput[i] = userInput[i].textContent;
+      userInput[i] = userInput[i].split('');
+    };
+    
+  //проверяет буквы массива на соответсвие вводимым символам
+    for (let i=0; i<userInput.length; i++) {
+      if(text.includes(userInput[i][i])) {
+        userInput = {text: userInput[i].textContent, value: userInput[i].value}
+      };  
+    };
+  
+
     /*
       TODO: этот метод нужно дописать
       text - фраза, которую вводят в поле поиска
