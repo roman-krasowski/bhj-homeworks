@@ -78,7 +78,7 @@ class Autocomplete {
     
   //проверяет буквы массива на соответсвие вводимым символам
     for (let i=0; i<userInput.length; i++) {
-      if(text.includes(userInput[i][i])) {
+      if(text.includes(userInput[i][i]) && indexof(userInput[i][i] = )) { //число введенных символов до очистки формы?
         userInput = {text: userInput[i].textContent, value: userInput[i].value}
       };  
     };
