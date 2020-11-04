@@ -66,23 +66,21 @@ class Autocomplete {
 
     this.list.innerHTML = html.join('');
   }
-
-  getMatches( text ) {
-    
-    //расспличивает слова по буквам
-    let userInput = Array.from(this.input.options);
-    for (let i=0; i<userInput.length; i++) {
-      userInput[i] = userInput[i].textContent;
-      userInput[i] = userInput[i].split('');
-    };
-    
-  //проверяет буквы массива на соответсвие вводимым символам
-    for (let i=0; i<userInput.length; i++) {
-      if(text.includes(userInput[i][i]) && indexof(userInput[i][i] = )) { //число введенных символов до очистки формы?
-        userInput = {text: userInput[i].textContent, value: userInput[i].value}
-      };  
-    };
   
+  getMatches( text ) {
+  let userInput = [];
+  let input = document.querySelector('.autocomplete__input');
+  let options = Array.from(this.input.options);
+  
+  for(let i=0; i<options.length; i++) {
+    options[i] = options[i].textContent;
+    
+    if(options[i].includes(text)) {
+      userInput.push({text: options[i], value: input[i].value});
+      console.log(userInput);
+      return userInput;
+    };
+  };
 
     /*
       TODO: этот метод нужно дописать
