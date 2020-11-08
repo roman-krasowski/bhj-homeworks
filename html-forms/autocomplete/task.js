@@ -69,18 +69,17 @@ class Autocomplete {
   
   getMatches( text ) {
   let userInput = [];
-  let input = document.querySelector('.autocomplete__input');
+  //let input = document.querySelector('.autocomplete__input');
   let options = Array.from(this.input.options);
   
   for(let i=0; i<options.length; i++) {
     options[i] = options[i].textContent;
     
     if(options[i].includes(text)) {
-      userInput.push({text: options[i], value: input[i].value});
-      console.log(userInput);
-      return userInput;
+      userInput.push({text: options[i], value: options[i].value});      
     };
   };
+  return userInput;
 
     /*
       TODO: этот метод нужно дописать
