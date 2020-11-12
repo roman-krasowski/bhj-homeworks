@@ -1,7 +1,8 @@
 'use strict'
 const progress = document.getElementById('progress');
-let fileInput = document.getElementsByTagName('input')[0];
+let fileInput = document.getElementById('form');
 
+/*
 //данные для проверки подгрузки файла
 fileInput.addEventListener("change", () => {
     for(let i=0; i<fileInput.files.length; i++) {
@@ -10,9 +11,10 @@ fileInput.addEventListener("change", () => {
         console.log("Size: " + fileInput.files[i].size + " bytes");
     };
 });
+*/
 
 fileInput.addEventListener('submit', (e) => {
-    let form = new FormData();
+    let form = new FormData(fileInput);
     form.append('file', fileInput.files[0]);
     
     let xhr = new XMLHttpRequest();
