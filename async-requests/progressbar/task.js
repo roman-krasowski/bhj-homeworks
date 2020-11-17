@@ -1,11 +1,11 @@
 'use strict'
-const progress = document.getElementById('progress');
+let progress = document.getElementById('progress');
 let fileInput = document.getElementById('form');
 
 /*
 //данные для проверки подгрузки файла
 fileInput.addEventListener("change", () => {
-    for(let i=0; i<fileInput.files.length; i++) {
+    for(let i=0; i<fileInput.length; i++) {
         console.log("Filename: " + fileInput.files[i].name);
         console.log("Type: " + fileInput.files[i].type);
         console.log("Size: " + fileInput.files[i].size + " bytes");
@@ -14,15 +14,19 @@ fileInput.addEventListener("change", () => {
 */
 
 fileInput.addEventListener('submit', (e) => {
-    let form = new FormData(fileInput);
-    form.append('file', fileInput.files[0]);
-    
+    e.preventDefault(); 
+
+    let formData = new FormData(form);
+
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://netology-slow-rest.herokuapp.com/upload.php', true);
-    xhr.send(form);
-    xhr.onload = function() {
-        console.log('The file has been uploaded');
+    xhr.open('POST', 'https://netology-slow-rest.herokuapp.com/upload.php');
+
+    xhr.upload.onprogress = function(event) {
+        progress.value = event.loaded / event.total; 
+      } 
+        xhr.onload = function() {
+        alert( 'Загружено на сервер');
     };
 
-    e.preventDefault();
+    xhr.send(formData);
 });
