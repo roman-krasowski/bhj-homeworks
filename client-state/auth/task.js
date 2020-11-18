@@ -34,7 +34,6 @@ signinForm.addEventListener('submit', (e) => {
                     welcome.textContent += response.user_id;
                 } else {
                     alert('Неверный логин/пароль');
-                    console.log(login);
                 }
             }
         }
