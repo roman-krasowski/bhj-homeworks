@@ -1,30 +1,39 @@
-
 'use strict'
-let checkbox = Array.from(document.querySelectorAll('.interest__check'));
-let element = Array.from(document.getElementsByClassName('interest'));
-let parent = document.getElementsByClassName('interests_active');
+const checkbox = document.querySelectorAll('.interest__check');
 
-let parents =[];
-let childs = [];
 
-for(let i=0; i<element.length; i++) {
-    if(element[i].closest('.interests_active')) {
-        childs.push(element[i]);
-        element[i].addEventListener('click', () => {
-            let parent = element[i].closest('.interests_active');
-            parent = parent.closest('.interest');
-            parent = parent.querySelector('.interest__check');
+for(let i=0; i<checkbox.length; i++) {
+    checkbox[i].addEventListener('click', (event) => {
+        let target = event.target;
+        let childLi = target.closest('li').querySelectorAll('ul li');
 
-            if(element[i].checked = true) {
-                parent.indeterminate = true;
-            } else {
-                parent.checked = false;
+        if(childLi.length > 0) {
+            for(let j=0; j<childLi.length; j++) {
+                childLi[j].querySelector('input').checked = target.checked;
             }
-        });
-    } else {
-        parents.push(element[i]);
-    }
+        }
+        
+        upListChecked(target);
+
+    })
 }
 
-// console.log(childs);
-// console.log(parents);
+function upListChecked(target) {
+    let parentUlChild = target.closest('ul');
+    let childInput = parentUlChild.querySelectorAll('input');
+    let parentLiUl = parentUlChild.closest('li');
+    
+    if(parentLiUl) {
+        let inputParentUlLi = parentLiUl.querySelector('input');
+        let array = [];
+        for(let i=0; i<childInput.length; i++) {
+            array.push(childInput[i].checked);
+        }
+
+        inputParentUlLi.checked = array.every(Boolean);
+        inputParentUlLi.indeterminate = !array.every(Boolean) && array.some(Boolean);
+
+        upListChecked(inputParentUlLi);
+    }
+
+}
